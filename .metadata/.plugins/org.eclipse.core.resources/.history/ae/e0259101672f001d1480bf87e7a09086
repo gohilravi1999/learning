@@ -1,0 +1,15 @@
+package com.learning.student.bean;
+
+import javax.persistence.Entity;
+
+import com.learning.shared.bean.CommonDetailBean;
+
+@Entity
+public class Student extends CommonDetailBean{
+	
+	private String name1;
+	private String email1;
+	
+
+	
+}

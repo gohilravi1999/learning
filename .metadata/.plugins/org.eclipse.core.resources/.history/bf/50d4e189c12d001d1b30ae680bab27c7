@@ -1,0 +1,37 @@
+package com.learning.student.controller;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.learning.shared.bean.ResponseBean;
+import com.learning.shared.constant.StatusCode;
+import com.learning.shared.util.JsonUtil;
+import com.learning.shared.util.LocaleUtils;
+import com.learning.student.bean.StudentBean;
+import com.learning.student.url.StudentUrl;
+
+@RestController
+@RequestMapping(StudentUrl.STUDENT)
+public class StudentController {
+	
+	ObjectMapper mapper = new ObjectMapper();
+	
+	@PostMapping
+	public ResponseBean<Map<String, String>> addStudent(@RequestBody String requestBody) throws Exception {
+		ResponseBean<Map<String, String>> responseBean = new ResponseBean<Map<String, String>>();
+		StudentBean studentBean = mapper.convertValue(JsonUtil.createRequestBean(requestBody), StudentBean.class);
+		Map<String, String> studentMap = new HashMap<String, String>();
+		studentBean = null;
+		studentMap.put("Student name:", studentBean.getName());
+		responseBean = JsonUtil.createResponseBean(StatusCode.STATUS_OK, LocaleUtils.getMessage("saved.successfully.message", null), studentMap);
+		return responseBean;
+	}
+
+}

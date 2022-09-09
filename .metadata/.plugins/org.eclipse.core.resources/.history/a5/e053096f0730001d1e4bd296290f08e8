@@ -1,0 +1,18 @@
+package com.learning.shared.service.impl;
+
+import javax.validation.ConstraintViolationException;
+
+import org.springframework.stereotype.Service;
+
+import com.learning.shared.service.ValidationService;
+
+@Service
+public class ValidationServiceImpl implements ValidationService{
+
+	@Override
+	public boolean validateBean() throws ConstraintViolationException {
+		return true;
+	}
+
+	
+}

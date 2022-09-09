@@ -1,0 +1,31 @@
+package com.learning.student.service.impl;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.learning.student.bean.Student;
+import com.learning.student.bean.StudentDTO;
+import com.learning.student.dao.StudentDao;
+import com.learning.student.service.StudentService;
+
+@Service
+public class StudentServiceImpl implements StudentService{
+	
+	@Autowired
+	StudentDao studentDao;
+
+	public Map<String, String> addStudent(StudentDTO studentDto) throws IllegalAccessException, InvocationTargetException {
+		Student student = new Student();
+		BeanUtils.copyProperties(student, studentDto);
+		studentDao.save(student);
+		Map<String, String> studentMap = new HashMap<String, String>();
+		studentMap.put("Name:", student.getName());
+		return studentMap;
+	}
+
+}

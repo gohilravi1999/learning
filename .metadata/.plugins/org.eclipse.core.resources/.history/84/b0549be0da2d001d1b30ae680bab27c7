@@ -1,0 +1,8 @@
+package com.learning.shared.util;
+
+public class StringUtils {
+
+	public static String getEmptyIfNull(String str){
+		return str==null ? "" : str;
+	}
+}

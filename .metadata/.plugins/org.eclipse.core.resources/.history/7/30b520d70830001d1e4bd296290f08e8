@@ -1,0 +1,8 @@
+package com.learning.shared.service;
+
+import javax.validation.ConstraintViolationException;
+
+public interface ValidationService {
+
+	<T> boolean validateBean(T responseData) throws ConstraintViolationException; 
+}

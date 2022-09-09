@@ -1,0 +1,24 @@
+package com.learning.shared.util;
+
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class ValidationUtil {
+	
+	static Validator staticValidator;
+	
+	@Autowired
+	Validator validator;
+	
+	@Autowired
+	private ValidationUtil(Validator staticValidator) {
+		ValidationUtil.staticValidator = staticValidator;
+	}
+	
+	
+}

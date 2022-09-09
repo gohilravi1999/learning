@@ -1,0 +1,17 @@
+package com.learning.shared.util;
+
+import javax.validation.Validator;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class ValidationUtil {
+	
+	private static Validator validator;
+	
+	@Autowired
+	private ValidationUtil(Validator validator) {
+		ValidationUtil.validator = validator;
+	}
+	
+
+}

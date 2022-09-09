@@ -1,0 +1,13 @@
+#configuring application name  
+spring.application.name = Learning Application  
+#configuring port  
+server.port = 8081
+
+#database
+spring.datasource.url=jdbc:mysql://localhost:3306/learning_db
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+spring.jpa.database-platform=org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.generate-ddl=true
+spring.jpa.hibernate.ddl-auto = update

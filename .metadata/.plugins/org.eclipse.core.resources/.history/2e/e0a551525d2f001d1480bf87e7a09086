@@ -1,0 +1,14 @@
+package com.learning.student.service.impl;
+
+import java.util.Map;
+
+import com.learning.student.service.StudentService;
+
+public class StudentServiceImpl implements StudentService{
+
+	public Map<String, String> addStudent() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

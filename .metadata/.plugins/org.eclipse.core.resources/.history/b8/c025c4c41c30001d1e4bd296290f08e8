@@ -1,0 +1,5 @@
+package com.learning.shared.validation;
+
+public class ValidationServiceImpl {
+
+}

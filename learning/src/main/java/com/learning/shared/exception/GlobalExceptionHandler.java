@@ -1,0 +1,62 @@
+package com.learning.shared.exception;
+
+import java.lang.reflect.InvocationTargetException;
+
+import javax.validation.ConstraintViolationException;
+
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.log4j.Logger;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.learning.shared.bean.ResponseBean;
+import com.learning.shared.constant.StatusCode;
+import com.learning.shared.util.JsonUtil;
+
+@RestController
+@ControllerAdvice
+public class GlobalExceptionHandler {
+		
+	private final static Logger logger = Logger.getLogger(GlobalExceptionHandler.class);
+
+	@ExceptionHandler(NullPointerException.class)
+	public ResponseBean<String> nullPointerException(NullPointerException exception) {
+		logger.error(ExceptionUtils.getStackTrace(exception));
+		ResponseBean<String> responseBean = JsonUtil.createResponseBean(StatusCode.INTERNAL_SERVER_ERROR,
+				"Something went wrong please try again!!", null);
+		return responseBean;
+	}
+	
+	@ExceptionHandler(IllegalAccessException.class)
+	public ResponseBean<String> illegalAccessException(IllegalAccessException exception) {
+		logger.error(ExceptionUtils.getStackTrace(exception));
+		ResponseBean<String> responseBean = JsonUtil.createResponseBean(StatusCode.INTERNAL_SERVER_ERROR,
+				"Something went wrong please try again!!", null);
+		return responseBean;
+	}
+	
+	@ExceptionHandler(InvocationTargetException.class)
+	public ResponseBean<String> invocationTargetException(InvocationTargetException exception) {
+		logger.error(ExceptionUtils.getStackTrace(exception));
+		ResponseBean<String> responseBean = JsonUtil.createResponseBean(StatusCode.INTERNAL_SERVER_ERROR,
+				"Something went wrong please try again!!", null);
+		return responseBean;
+	}
+	
+	@ExceptionHandler(ConstraintViolationException.class)
+	public ResponseBean<String> constraintViolationException(ConstraintViolationException exception) {
+		logger.error(ExceptionUtils.getStackTrace(exception));
+		ResponseBean<String> responseBean = JsonUtil.createResponseBean(StatusCode.INTERNAL_SERVER_ERROR,
+				exception.getMessage(), null);
+		return responseBean;
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ResponseBean<String> exception(Exception exception) {
+		logger.error(ExceptionUtils.getStackTrace(exception));
+		ResponseBean<String> responseBean = JsonUtil.createResponseBean(StatusCode.INTERNAL_SERVER_ERROR,
+				"Something went wrong please try again!!", null);
+		return responseBean;
+	}
+}

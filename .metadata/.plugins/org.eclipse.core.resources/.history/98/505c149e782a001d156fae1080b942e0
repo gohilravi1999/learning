@@ -1,0 +1,5 @@
+package com.learning.student.url;
+
+public interface StudentUrl {
+
+}

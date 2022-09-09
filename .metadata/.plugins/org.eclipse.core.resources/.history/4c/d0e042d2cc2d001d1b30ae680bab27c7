@@ -1,0 +1,22 @@
+package com.learning.shared.util;
+
+import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
+public class LocaleUtils extends SessionLocaleResolver {
+	
+	@Autowired 
+	private static MessageSource messageSource;
+		
+	public static String getMessage(String messageTitle) {
+		if(!StringUtils.getEmptyIfNull(messageTitle).isEmpty()){
+			return messageSource.getMessage(messageTitle, null,null);
+		}
+		else{
+			return messageTitle;	
+		}
+	}
+}

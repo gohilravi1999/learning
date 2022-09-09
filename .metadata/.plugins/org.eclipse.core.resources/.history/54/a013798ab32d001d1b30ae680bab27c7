@@ -1,0 +1,2 @@
+2022-09-06 12:42:05,702 +0530 [http-nio-8081-exec-1] INFO  (StudentController.java:41) - Before error
+2022-09-06 12:42:05,707 +0530 [http-nio-8081-exec-1] INFO  (GlobalExceptionHandler.java:22) - after error

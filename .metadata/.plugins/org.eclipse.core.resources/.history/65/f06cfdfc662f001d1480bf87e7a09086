@@ -1,0 +1,26 @@
+package com.learning.student.bean;
+
+import javax.persistence.Entity;
+
+import com.learning.shared.bean.CommonDetailBean;
+
+@Entity
+public class Student extends CommonDetailBean{
+	
+	private String name1;
+	private String email1;
+	
+	public String getName() {
+		return name1;
+	}
+	public void setName(String name) {
+		this.name1 = name;
+	}
+	public String getEmail() {
+		return email1;
+	}
+	public void setEmail(String email) {
+		this.email1 = email;
+	}	
+	
+}

@@ -1,0 +1,5 @@
+package com.learning.student.bean;
+
+public class Student {
+
+}

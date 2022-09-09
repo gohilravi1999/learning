@@ -1,0 +1,26 @@
+package com.learning.student.service.impl;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.stereotype.Service;
+
+import com.learning.student.bean.Student;
+import com.learning.student.bean.StudentDTO;
+import com.learning.student.service.StudentService;
+
+@Service
+public class StudentServiceImpl implements StudentService{
+
+	public Map<String, String> addStudent(StudentDTO studentDto) throws IllegalAccessException, InvocationTargetException {
+		Student student = new Student();
+		BeanUtils.copyProperties(student, studentDto);
+		Map<String, String> studentMap = new HashMap<String, String>();
+		//studentBean = null;
+		studentMap.put("Student name:", student.getName1());
+		return studentMap;
+	}
+
+}

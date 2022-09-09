@@ -1,0 +1,33 @@
+package com.learning.shared.util;
+
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class ValidationUtil {
+	
+	private static Validator validator;
+	
+	@Autowired
+	private ValidationUtil(Validator validator) {
+		ValidationUtil.validator = validator;
+	}
+	
+	public static <T> boolean validateBean(T requestBean) {
+		Set<ConstraintViolation<T>> violations = validator.validate(requestBean);
+
+		if (!violations.isEmpty()) {
+			StringBuilder sb = new StringBuilder();
+			for (ConstraintViolation<T> constraintViolation : violations) {
+				sb.append(constraintViolation.getMessage());
+			}
+			throw new ConstraintViolationException("Error occurred: " + sb.toString(), violations);
+		}
+		return true;
+	}
+
+}
